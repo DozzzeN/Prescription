@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mapper.TD2Mapper">
+    <insert id="insertTD2" parameterType="java.lang.String">
+        insert into td2(id, td2)
+        values (id, #{td2})
+    </insert>
+    <update id="updateById">
+        update td2
+        set td2 = #{td2}
+        where id = #{id}
+    </update>
+    <delete id="deleteByLabel" parameterType="java.lang.String">
+        delete
+        from td2
+        where td2 like concat('%', #{label_ind}, '%');
+    </delete>
+    <delete id="deleteTable">
+        truncate table td2
+    </delete>
+    <select id="selectByLabel" resultType="java.lang.String" parameterType="java.lang.String">
+        select td2
+        from td2
+        where td2 like concat('%', #{label_ind}, '%');
+    </select>
+    <select id="selectByLabelAtAndLabelInd" resultType="java.lang.String" parameterType="java.lang.String">
+        select td2
+        from td2
+        where td2 like concat('%', #{label_at}, '%')
+          and td2 like concat('%', #{label_ind}, '%');
+    </select>
+</mapper>

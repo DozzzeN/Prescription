@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mapper.PrescriptionMapper">
+    <update id="updateByName">
+        update prescription
+        set name = #{name}
+        where pkid = #{pkid}
+    </update>
+    <update id="updateByMedicine">
+        update prescription
+        set medicine = #{medicine}
+        where pkid = #{pkid}
+    </update>
+    <update id="updateBySpecification">
+        update prescription
+        set specification = #{specification}
+        where pkid = #{pkid}
+    </update>
+    <update id="updateByUnit">
+        update prescription
+        set unit = #{unit}
+        where pkid = #{pkid}
+    </update>
+    <update id="updateByPrice">
+        update prescription
+        set price = #{price}
+        where pkid = #{pkid}
+    </update>
+    <update id="updateByNumber">
+        update prescription
+        set number = #{number}
+        where pkid = #{pkid}
+    </update>
+    <update id="updateByAmount">
+        update prescription
+        set amount = #{amount}
+        where pkid = #{pkid}
+    </update>
+    <select id="getPrescriptionByPkid" parameterType="java.lang.String" resultType="pojo.Prescription">
+        select pkid,
+               id,
+               name,
+               medicine,
+               specification,
+               unit,
+               price,
+               number,
+               amount
+        from prescription
+        where pkid = #{pkid}
+    </select>
+    <select id="getPrescriptionById" parameterType="java.lang.String" resultType="pojo.Prescription">
+        select pkid,
+               id,
+               name,
+               medicine,
+               specification,
+               unit,
+               price,
+               number,
+               amount
+        from prescription
+        where id = #{id}
+    </select>
+    <select id="getCount" resultType="java.lang.Integer">
+        select count(*)
+        from prescription
+    </select>
+    <select id="medicineCount" resultType="java.util.HashMap">
+        select medicine, count(*) as number
+        from prescription
+        group by medicine
+    </select>
+    <select id="nameCount" resultType="java.util.HashMap">
+        select name, count(*) as number
+        from prescription
+        group by name
+    </select>
+    <select id="idCount" resultType="java.util.HashMap">
+        select id, count(*) as number
+        from prescription
+        group by id
+    </select>
+    <select id="specificationCount" resultType="java.util.HashMap">
+        select specification, count(*) as number
+        from prescription
+        group by specification
+    </select>
+    <select id="unitCount" resultType="java.util.HashMap">
+        select unit, count(*) as number
+        from prescription
+        group by unit
+    </select>
+    <select id="priceCount" resultType="java.util.HashMap">
+        select price, count(*) as number
+        from prescription
+        group by price
+    </select>
+    <select id="numberCount" resultType="java.util.HashMap">
+        select number, count(*) as number
+        from prescription
+        group by number
+    </select>
+    <select id="amountCount" resultType="java.util.HashMap">
+        select amount, count(*) as number
+        from prescription
+        group by amount
+    </select>
+    <select id="selectByAmount" resultType="java.lang.String">
+        select amount
+        from prescription
+        where amount != '0';
+    </select>
+    <select id="selectByNumber" resultType="java.lang.String">
+        select number
+        from prescription
+        where number != '0';
+    </select>
+    <select id="selectByPrice" resultType="java.lang.String">
+        select price
+        from prescription
+        where price != '0';
+    </select>
+    <select id="selectByUnit" resultType="java.lang.String">
+        select unit
+        from prescription
+        where unit != 'null';
+    </select>
+    <select id="selectBySpecification" resultType="java.lang.String">
+        select specification
+        from prescription
+        where specification != 'null';
+    </select>
+    <select id="selectByMedicine" resultType="java.lang.String">
+        select medicine
+        from prescription
+        where medicine != 'null';
+    </select>
+    <select id="selectByName" resultType="java.lang.String">
+        select name
+        from prescription
+        where name != 'null';
+    </select>
+    <select id="selectById" resultType="java.lang.String">
+        select id
+        from prescription
+        where id != 'null';
+    </select>
+</mapper>
